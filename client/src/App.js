@@ -20,14 +20,6 @@ function App() {
               element={<Home />}
             />
             <Route 
-              path="/matchup" 
-              element={<Matchup />}
-            />
-            <Route 
-              path="/matchup/:id" 
-              element={<Vote />}
-            />
-            <Route 
               path="*"
               element={<NotFound />}
             />
