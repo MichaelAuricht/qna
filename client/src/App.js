@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import Home from './pages/Home';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 
 const client = new ApolloClient({
@@ -22,6 +25,18 @@ function App() {
             <Route 
               path="*"
               element={<NotFound />}
+            />
+            <Route
+            path="/login"
+            element={<Login />}
+            />
+            <Route
+            path="/signup"
+            element={<Signup />}
+            />
+            <Route
+            path="/profile"
+            element={<Profile />}
             />
           </Routes>
         </div>
