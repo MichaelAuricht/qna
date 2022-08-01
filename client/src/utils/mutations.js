@@ -12,12 +12,12 @@ export const ADD_PROFILE = gql`
   }
 `;
 
-export const ADD_SKILL = gql`
-  mutation addSkill($profileId: ID!, $skill: String!) {
-    addSkill(profileId: $profileId, skill: $skill) {
+export const ADD_QUESTION = gql`
+  mutation addQuestion($profileId: ID!, $question: String!) {
+    addQuestion(profileId: $profileId, question: $question) {
       _id
       name
-      skills
+      questions
     }
   }
 `;
@@ -30,6 +30,16 @@ export const LOGIN_USER = gql`
         _id
         name
       }
+    }
+  }
+`;
+
+export const REMOVE_QUESTION = gql`
+  mutation removeQuestion($question: String!) {
+    removeQuestion(question: $question) {
+      _id
+      name
+      questions
     }
   }
 `;
