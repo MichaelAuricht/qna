@@ -27,7 +27,7 @@ const QuestionForm = ({ profileId }) => {
 
   return (
     <div>
-      <h4>Ask some more questions below.</h4>
+      <h4>Want to ask or answer a question?</h4>
 
       {Auth.loggedIn() ? (
         <form

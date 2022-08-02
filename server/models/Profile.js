@@ -22,6 +22,7 @@ const profileSchema = new Schema({
   questions: [
     {
       type: String,
+      unique: true,
       trim: true,
     },
   ],

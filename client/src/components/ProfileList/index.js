@@ -15,11 +15,15 @@ const ProfileList = ({ profiles, title }) => {
             <div key={profile._id} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0">
-                  {profile.name} <br />
+                  {profile.name}'s <br />
                   <span className="text-white" style={{ fontSize: '1rem' }}>
-                    currently has {profile.questions ? profile.questions.length : 0}{' '}
-                    question
-                    {profile.questions && profile.questions.length === 1 ? '' : 's'}
+                     most recent question is:
+                     <Link
+                  className="btn btn-block btn-squared btn-light text-dark"
+                  to={`/profiles/${profile._id}/question`}
+                     > 
+                     {profile.questions[profile.questions.length -1]}
+                     </Link>
                   </span>
                 </h4>
 
@@ -27,7 +31,7 @@ const ProfileList = ({ profiles, title }) => {
                   className="btn btn-block btn-squared btn-light text-dark"
                   to={`/profiles/${profile._id}`}
                 >
-                  View their questions.
+                  View all of {profile.name}'s questions.
                 </Link>
               </div>
             </div>
