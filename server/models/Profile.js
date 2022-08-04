@@ -26,6 +26,18 @@ const profileSchema = new Schema({
       trim: true,
     },
   ],
+  newqs: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Question'
+    },
+  ],
+  answers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Answer'
+    },
+  ],
 });
 
 // set up pre-save middleware to create password

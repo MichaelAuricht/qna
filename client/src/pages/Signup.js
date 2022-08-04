@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_PROFILE } from '../utils/mutations';
 
-import Auth from '../utils/auth';
+import AuthService from '../utils/auth';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
@@ -34,7 +34,7 @@ const Signup = () => {
         variables: { ...formState },
       });
 
-      Auth.login(data.addProfile.token);
+      AuthService.login(data.addProfile.token);
     } catch (e) {
       console.error(e);
     }
