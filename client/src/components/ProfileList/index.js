@@ -17,8 +17,8 @@ const ProfileList = ({ profiles, title }) => {
                 <h4 className="card-header bg-dark text-light p-2 m-0">
                   {profile.name}'s <br />
                   <span className="text-white" style={{ fontSize: '1rem' }}>
-                     most recent question is:
-                     <Link
+                    most recent question is
+                    <Link
                   className="btn btn-block btn-squared btn-light text-dark"
                   to={`/profiles/${profile._id}/question`}
                      > 
@@ -31,7 +31,7 @@ const ProfileList = ({ profiles, title }) => {
                   className="btn btn-block btn-squared btn-light text-dark"
                   to={`/profiles/${profile._id}`}
                 >
-                  View all of {profile.name}'s questions.
+                  View all their questions.
                 </Link>
               </div>
             </div>
