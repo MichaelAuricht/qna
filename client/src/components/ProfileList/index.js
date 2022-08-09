@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const ProfileList = ({ profiles, title }) => {
   if (!profiles.length) {
@@ -16,14 +16,14 @@ const ProfileList = ({ profiles, title }) => {
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0">
                   {profile.name}'s <br />
-                  <span className="text-white" style={{ fontSize: '1rem' }}>
+                  <span className="text-white" style={{ fontSize: "1rem" }}>
                     most recent question is
                     <Link
-                  className="btn btn-block btn-squared btn-light text-dark"
-                  to={`/profiles/${profile._id}/question`}
-                     > 
-                     {profile.questions[profile.questions.length -1]}
-                     </Link>
+                      className="btn btn-block btn-squared btn-light text-dark"
+                      to={`/profiles/${profile._id}/question`}
+                    >
+                      {/* {profile.questions[profile.questions.length - 1]} */}
+                    </Link>
                   </span>
                 </h4>
 

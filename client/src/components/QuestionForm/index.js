@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useMutation } from '@apollo/client';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
 
-import { ADD_QUESTION } from '../../utils/mutations';
+import { ADD_QUESTION } from "../../utils/mutations";
 
-import Auth from '../../utils/auth';
+import Auth from "../../utils/auth";
 
-const QuestionForm = ({ profileId }) => {
-  const [question, setQuestion] = useState('');
+const QuestionForm = () => {
+  const [question, setQuestion] = useState("");
 
   const [addQuestion, { error }] = useMutation(ADD_QUESTION);
 
@@ -16,10 +16,10 @@ const QuestionForm = ({ profileId }) => {
 
     try {
       const data = await addQuestion({
-        variables: { profileId, question },
+        variables: { question },
       });
 
-      setQuestion('');
+      setQuestion("");
     } catch (err) {
       console.error(err);
     }
@@ -36,7 +36,7 @@ const QuestionForm = ({ profileId }) => {
         >
           <div className="col-12 col-lg-9">
             <input
-              placeholder="Ask some questions..."
+              placeholder="Ask something..."
               value={question}
               className="form-input w-100"
               onChange={(event) => setQuestion(event.target.value)}
@@ -56,7 +56,7 @@ const QuestionForm = ({ profileId }) => {
         </form>
       ) : (
         <p>
-          You need to be logged in to ask questions. Please{' '}
+          You need to be logged in to ask questions. Please{" "}
           <Link to="/login">login</Link> or <Link to="/signup">signup.</Link>
         </p>
       )}

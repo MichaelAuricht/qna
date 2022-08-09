@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+
 export const ADD_PROFILE = gql`
   mutation addProfile($name: String!, $email: String!, $password: String!) {
     addProfile(name: $name, email: $email, password: $password) {
@@ -13,11 +14,10 @@ export const ADD_PROFILE = gql`
 `;
 
 export const ADD_QUESTION = gql`
-  mutation addQuestion($profileId: ID!, $question: String!) {
-    addQuestion(profileId: $profileId, question: $question) {
+  mutation addQuestion($question: String!) {
+    addQuestion(question: $question) {
       _id
-      name
-      questions
+      question
     }
   }
 `;
@@ -38,7 +38,6 @@ export const REMOVE_QUESTION = gql`
   mutation removeQuestion($question: String!) {
     removeQuestion(question: $question) {
       _id
-      name
       questions
     }
   }

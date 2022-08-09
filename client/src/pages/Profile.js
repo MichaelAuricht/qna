@@ -1,14 +1,14 @@
-import React from 'react';
+import React from "react";
 
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-import QuestionsList from '../components/QuestionsList';
-import QuestionForm from '../components/QuestionForm';
+import QuestionsList from "../components/QuestionsList";
+import QuestionForm from "../components/QuestionForm";
 
-import { QUERY_SINGLE_PROFILE, QUERY_ME } from '../utils/queries';
+import { QUERY_SINGLE_PROFILE, QUERY_ME } from "../utils/queries";
 
-import Auth from '../utils/auth';
+import Auth from "../utils/auth";
 
 const Profile = () => {
   const { profileId } = useParams();
@@ -45,7 +45,7 @@ const Profile = () => {
   return (
     <div>
       <h2 className="card-header">
-        {profileId ? `${profile.name} has` : 'You have' } asked these
+        {profileId ? `${profile.name} has` : "You have"} asked these
         questions...
       </h2>
 
@@ -56,7 +56,7 @@ const Profile = () => {
         />
       )}
 
-      <div className="my-4 p-4" style={{ border: '1px dotted #1a1a1a' }}>
+      <div className="my-4 p-4" style={{ border: "1px dotted #1a1a1a" }}>
         <QuestionForm profileId={profile._id} />
       </div>
     </div>
