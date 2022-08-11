@@ -26,4 +26,4 @@ Would be interesting to add a roulette functionality not unlike tinder or chatro
 
 ## Links
 
-[LinkName](Link)
+[Deployed on Heroku](https://ma-qna.herokuapp.com/)
