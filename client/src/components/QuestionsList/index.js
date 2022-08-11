@@ -5,6 +5,7 @@ import { REMOVE_QUESTION } from "../../utils/mutations";
 import { QUERY_ME } from "../../utils/queries";
 
 const QuestionsList = ({ questions, isLoggedInUser = false }) => {
+
   const [removeQuestion, { error }] = useMutation(REMOVE_QUESTION, {
     update(cache, { data: { removeQuestion } }) {
       try {
@@ -20,8 +21,9 @@ const QuestionsList = ({ questions, isLoggedInUser = false }) => {
 
   const handleRemoveQuestion = async (question) => {
     try {
-      const { data } = await removeQuestion({
-        variables: { question },
+      const id = question._id;
+      await removeQuestion({
+        variables: { questionId: id },
       });
     } catch (err) {
       console.error(err);
@@ -37,10 +39,10 @@ const QuestionsList = ({ questions, isLoggedInUser = false }) => {
       <div className="flex-row justify-space-between my-4">
         {questions &&
           questions.map((question) => (
-            <div key={question} className="col-12 col-xl-6">
+            <div key={question._id} className="col-12 col-xl-6">
               <div className="card mb-3">
                 <h4 className="card-header bg-dark text-light p-2 m-0 display-flex align-center">
-                  <span>{question}</span>
+                  <span>{question.question}</span>
                   {isLoggedInUser && (
                     <button
                       className="btn btn-sm btn-danger ml-auto"

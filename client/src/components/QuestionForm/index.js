@@ -3,13 +3,25 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_QUESTION } from "../../utils/mutations";
+import { QUERY_ME } from "../../utils/queries";
 
 import Auth from "../../utils/auth";
 
 const QuestionForm = () => {
   const [question, setQuestion] = useState("");
 
-  const [addQuestion, { error }] = useMutation(ADD_QUESTION);
+  const [addQuestion, { error }] = useMutation(ADD_QUESTION , {
+    update(cache, { data: { addQuestion } }) {
+      try {
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: addQuestion },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -18,7 +30,7 @@ const QuestionForm = () => {
       const data = await addQuestion({
         variables: { question },
       });
-
+      // window.location.reload(false)  // filthy. quick and dirty way to get the list to update when we add a new question so it shows up
       setQuestion("");
     } catch (err) {
       console.error(err);

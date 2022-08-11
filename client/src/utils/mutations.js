@@ -35,10 +35,10 @@ export const LOGIN_USER = gql`
 `;
 
 export const REMOVE_QUESTION = gql`
-  mutation removeQuestion($question: String!) {
-    removeQuestion(question: $question) {
+  mutation RemoveQuestion($questionId: String!) {
+    removeQuestion(questionId: $questionId) {
       _id
-      questions
+      question
     }
   }
 `;

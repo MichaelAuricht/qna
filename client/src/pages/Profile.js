@@ -6,7 +6,7 @@ import { useQuery } from "@apollo/client";
 import QuestionsList from "../components/QuestionsList";
 import QuestionForm from "../components/QuestionForm";
 
-import { QUERY_SINGLE_PROFILE, QUERY_ME } from "../utils/queries";
+import { QUERY_SINGLE_PROFILE, QUERY_ME, QUERY_MY_QUESTIONS } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
@@ -21,6 +21,10 @@ const Profile = () => {
     }
   );
 
+  const result = useQuery (
+    QUERY_MY_QUESTIONS,
+  )
+
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
   const profile = data?.me || data?.profile || {};
 
@@ -29,7 +33,7 @@ const Profile = () => {
     return <Navigate to="/me" />;
   }
 
-  if (loading) {
+  if (loading || result.loading) {
     return <div>Loading...</div>;
   }
 
@@ -49,9 +53,9 @@ const Profile = () => {
         questions...
       </h2>
 
-      {profile.questions?.length > 0 && (
+      {result.data.questions.length > 0 && (
         <QuestionsList
-          questions={profile.questions}
+          questions={result.data.questions}
           isLoggedInUser={!profileId && true}
         />
       )}

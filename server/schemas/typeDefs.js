@@ -17,15 +17,15 @@ type Profile {
 
   type Question {
     _id: ID!
-    author: [Profile]
-    question: String
+    author: [Profile]!
+    question: String!
     answers: [Answer]
   }
 
   type Answer {
-    _id: ID
-    answer: String
-    score: Int
+    _id: ID!
+    answer: String!
+    score: Int!
   }
 
   type Auth {
@@ -47,12 +47,7 @@ type Profile {
     login(email: String!, password: String!): Auth
 
     addQuestion(question: String!): Question!
-    removeQuestion(quesId: ID!): ID!
-
-    addAnswer(quesId: ID!, answer: String!): Answer!
-    removeAnswer(quesId: ID!, ansId: ID!): ID!
-
-    voteAnswer(quesId: ID!, ansId: ID!, voteType: VoteType!): Answer!
+    removeQuestion(questionId: String!): Question!
   }
 `;
 

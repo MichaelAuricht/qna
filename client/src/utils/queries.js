@@ -5,6 +5,9 @@ export const QUERY_PROFILES = gql`
     profiles {
       _id
       name
+      questions {
+        question
+      }
     }
   }
 `;
@@ -23,6 +26,21 @@ export const QUERY_ME = gql`
     me {
       _id
       name
+      questions {
+        question
+      }
+    }
+  }
+`;
+
+export const QUERY_MY_QUESTIONS = gql`
+  query myQuestions {
+    questions {
+      _id
+      question
+      answers {
+        answer
+      }
     }
   }
 `;
