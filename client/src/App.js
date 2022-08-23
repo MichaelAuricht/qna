@@ -52,7 +52,7 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/me" element={<Profile />} />
               <Route path="/profiles/:profileId" element={<Profile />} />
-              <Route path="/profiles/:profileId/question" element={<Question />} />
+              <Route path="/questions/:questionId" element={<Question />} />
             </Routes>
           </div>
           <Footer />

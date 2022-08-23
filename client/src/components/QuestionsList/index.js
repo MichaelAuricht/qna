@@ -25,6 +25,7 @@ const QuestionsList = ({ questions, isLoggedInUser = false }) => {
       await removeQuestion({
         variables: { questionId: id },
       });
+      window.location.reload(false) // quick and dirty way to get the list to update when we delete a question
     } catch (err) {
       console.error(err);
     }

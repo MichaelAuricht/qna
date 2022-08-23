@@ -32,6 +32,10 @@ const resolvers = {
       return Answer.find();
     },
 
+    oneQuestion: async (parent, { questionId }) => {
+      return Question.findOne({ _id: questionId }).populate("answers");
+    }
+
 
   },
 

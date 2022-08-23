@@ -44,3 +44,14 @@ export const QUERY_MY_QUESTIONS = gql`
     }
   }
 `;
+
+export const QUERY_SINGLE_QUESTION = gql`
+query singleQuestion($questionId: ID!) {
+  singleQuestion(questionId: $questionId) {
+    _id
+    question
+    answers {
+      answer
+    }  
+  }
+}`

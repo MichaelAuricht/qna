@@ -40,6 +40,7 @@ type Profile {
     me: Profile
     questions: [Question]!
     answers: [Answer]!
+    oneQuestion(questionId: ID!): Question
   }
 
   type Mutation {

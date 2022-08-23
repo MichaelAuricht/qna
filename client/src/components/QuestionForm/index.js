@@ -30,7 +30,7 @@ const QuestionForm = () => {
       const data = await addQuestion({
         variables: { question },
       });
-      // window.location.reload(false)  // filthy. quick and dirty way to get the list to update when we add a new question so it shows up
+     window.location.reload(false)  // quick and dirty way to get the list to update when we add a new question
       setQuestion("");
     } catch (err) {
       console.error(err);
