@@ -6,13 +6,13 @@ import { useQuery } from "@apollo/client";
 import QuestionsList from "../components/QuestionsList";
 import QuestionForm from "../components/QuestionForm";
 
-import { QUERY_SINGLE_PROFILE, QUERY_ME, QUERY_MY_QUESTIONS } from "../utils/queries";
+import { QUERY_SINGLE_PROFILE, QUERY_ME, QUERY_MY_QUESTIONS, QUERY_QUESTIONS } from "../utils/queries";
 
 import Auth from "../utils/auth";
 
 const Profile = () => {
   const { profileId } = useParams();
-
+console.log("profileId", profileId);
   // If there is no `profileId` in the URL as a parameter, execute the `QUERY_ME` query instead for the logged in user's information
   const { loading, data } = useQuery(
     profileId ? QUERY_SINGLE_PROFILE : QUERY_ME,
@@ -20,9 +20,11 @@ const Profile = () => {
       variables: { profileId: profileId },
     }
   );
-
   const result = useQuery (
-    QUERY_MY_QUESTIONS,
+    profileId ? QUERY_QUESTIONS : QUERY_MY_QUESTIONS,
+    {
+      variables: { profileId: profileId },
+    }
   )
 
   // Check if data is returning from the `QUERY_ME` query, then the `QUERY_SINGLE_PROFILE` query
@@ -45,7 +47,8 @@ const Profile = () => {
       </h4>
     );
   }
-
+  console.log("data" , data);
+ console.log("result", result.data.questions, result.loading);
   return (
     <div>
       <h2 className="card-header">

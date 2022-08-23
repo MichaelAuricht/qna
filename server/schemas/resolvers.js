@@ -9,7 +9,13 @@ const resolvers = {
     },
 
     profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId }).populate('questions').populate('answers');
+      console.log("resolvercalled" , profileId );
+
+      const result = Profile.findOne({ _id: profileId }).populate('questions').populate('answers');
+
+      console.log("returningresult", result);
+
+      return result;
     },
     // By adding context to our query, we can retrieve the logged in user without specifically searching for them
     me: async (parent, args, context) => {
