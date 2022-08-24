@@ -9,11 +9,7 @@ const resolvers = {
     },
 
     profile: async (parent, { profileId }) => {
-      console.log("resolvercalled" , profileId );
-
       const result = Profile.findOne({ _id: profileId }).populate('questions').populate('answers');
-
-      console.log("returningresult", result);
 
       return result;
     },

@@ -47,8 +47,8 @@ console.log("profileId", profileId);
       </h4>
     );
   }
-  console.log("data" , data);
- console.log("result", result.data.questions, result.loading);
+  const questions = result.data.questions || result.data.profile.questions || [];
+  
   return (
     <div>
       <h2 className="card-header">
@@ -56,9 +56,9 @@ console.log("profileId", profileId);
         questions...
       </h2>
 
-      {result.data.questions.length > 0 && (
+      {questions.length > 0 && (
         <QuestionsList
-          questions={result.data.questions}
+          questions={questions}
           isLoggedInUser={!profileId && true}
         />
       )}
